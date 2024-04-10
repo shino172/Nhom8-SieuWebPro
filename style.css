@@ -1,0 +1,40 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.device {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.device img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.device h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.device p {
+    color: #666;
+}
+
+.device .price {
+    font-weight: bold;
+    color: #009688;
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Devices</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f3f2f2;
+        display: flex;
+      }
+
+      /* sidebar */
+      .sidebar {
+        width: 250px;
+        background-color: #2c3e50;
+        color: #fff;
+        position: fixed;
+        height: 100%;
+        overflow-y: auto;
+        z-index: 1;
+        transition: width 0.5s;
+        padding-top: 20px; /* Add padding to the top */
+      }
+
+      .sidebar-brand {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        padding: 10px 20px; /* Add padding */
+        display: flex;
+        align-items: center;
+      }
+
+      .sidebar-brand img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+
+      .sidebar-menu {
+        padding: 20px;
+      }
+
+      .list-item {
+        list-style: none;
+        padding: 0;
+      }
+
+      .list-item a {
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        transition: color 0.3s ease;
+        display: block;
+        padding: 12px 20px;
+        border-radius: 5px;
+      }
+
+      .list-item a:hover {
+        background-color: #34495e;
+      }
+
+      /* container */
+      .container {
+        flex: 1;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 100%;
+        margin-left: 250px; /* Adjust for sidebar width */
+        box-sizing: border-box;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 10px;
+        color: #555;
+      }
+      .form {
+        width: 36%;
+      }
+      input[type="text"] {
+        width: calc(100%);
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      input[type="text"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 0;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        /* width: 100%; */
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      input[type="file"] {
+        height: auto;
+        padding-bottom: 20px;
+        border-radius: 6px;
+        color: white;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .w-36 {
+        width: 36%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="/"> <div class="sidebar-brand">Phone Shop</div></a>
+
+      <ul class="list-item">
+        <li><a href="/addDevices">Add Devices</a></li>
+        <li><a href="/update">Update Product</a></li>
+        <li><a href="/deleteProduct">Delete Product</a></li>
+        <li><a href="/view">View Detail Product</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <h1>Add Devices</h1>
+
+      <form id="devicesform" method="POST" enctype="multipart/form-data">
+        <div class="form">
+          <label for="name">Devices Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter devices name"
+            required />
+
+          <label for="description">Description</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Enter devices description"
+            required />
+
+          <label for="price">Price</label>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            placeholder="Enter devices price"
+            required />
+          <label for="software">Software</label>
+          <input
+            type="text"
+            id="software"
+            name="software"
+            placeholder="Enter devices software"
+            required />
+          <label for="image">Product Image:</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            required />
+        </div>
+        <button type="submit" onclick="add()" class="w-36">Add Product</button>
+      </form>
+    </div>
+    <script src="/public/JS/create.js"></script>
+  </body>
+</html>

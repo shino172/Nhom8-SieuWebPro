@@ -42,3 +42,34 @@ function fetchProducts() {
 window.onload = function () {
   fetchProducts();
 };
+
+// Xử lý sự kiện submit của form tìm kiếm
+document
+  .getElementById("searchForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+    // Lấy giá trị từ các ô input tìm kiếm
+    var string = document.getElementById("string").value;
+    var minPrice = document.getElementById("minPrice").value;
+    var maxPrice = document.getElementById("maxPrice").value;
+
+    // Gửi yêu cầu tìm kiếm đến máy chủ
+    fetch("/api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        string: string,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("rnderdata", data);
+        renderProducts(data); // Hiển thị kết quả tìm kiếm
+      })
+      .catch((error) => console.error("Failed to search products:", error));
+  });

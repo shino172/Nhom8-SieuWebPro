@@ -132,6 +132,46 @@ async function updateMulti(name, data) {
   }
 }
 
+// Sửa tên biến $or và $and thành query và $andQuery
+async function search(string, minPrice, maxPrice) {
+  try {
+    let query = {};
+    let $andQuery = [];
+
+    if (string !== "null" && string !== "") {
+      // Kiểm tra string không phải là "null" hoặc rỗng
+      $andQuery.push({
+        $or: [
+          { id: { $regex: string, $options: "i" } },
+          { name: { $regex: string, $options: "i" } },
+        ],
+      });
+    }
+
+    if (!isNaN(parseFloat(minPrice)) && parseFloat(minPrice) >= 0) {
+      // Kiểm tra minPrice là số và không âm
+      $andQuery.push({ price: { $gte: parseFloat(minPrice) } });
+    }
+
+    if (!isNaN(parseFloat(maxPrice)) && parseFloat(maxPrice) >= 0) {
+      // Kiểm tra maxPrice là số và không âm
+      $andQuery.push({ price: { $lte: parseFloat(maxPrice) } });
+    }
+
+    if ($andQuery.length > 0) {
+      query.$and = $andQuery;
+    }
+
+    console.log("Query:", query);
+    const devices = await dbCollection.find(query).toArray();
+    console.log("Devices:", devices);
+    return devices;
+  } catch (error) {
+    console.error("Error occurred while searching for devices:", error);
+    throw error;
+  }
+}
+
 module.exports = {
   connectToMongoDB,
   closeMongoDBConnection,
@@ -142,4 +182,5 @@ module.exports = {
   updateByID,
   updateMulti,
   addDevices,
+  search,
 };

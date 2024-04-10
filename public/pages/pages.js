@@ -2,19 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
 
-function addDevicesHTML() {
-  try {
-    const htmlPath = path.join(__dirname, "add.html");
-
-    // Đọc nội dung của tệp HTML
-    const html = fs.readFileSync(htmlPath, "utf8");
-
-    return html;
-  } catch (err) {
-    console.error("Failed to read HTML file:", err);
-    return "<p>Failed to load HTML content</p>";
-  }
-}
 function updateDevicesHTML() {
   try {
     const htmlPath = path.join(__dirname, "update.html");

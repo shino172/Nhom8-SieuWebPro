@@ -40,6 +40,7 @@ const {
   updateByID,
   updateMulti,
   addDevices,
+  search,
 } = require("./mongob");
 
 mongodbModule = {
@@ -52,6 +53,7 @@ mongodbModule = {
   updateByID,
   updateMulti,
   addDevices,
+  search,
 };
 
 const server = app.listen(port, () =>
@@ -72,8 +74,6 @@ process.on("SIGINT", () => {
   mongodbModule.closeMongoDBConnection();
 });
 
-
-
 app.get("/", async (req, res) => {
   res.sendFile(path.resolve(__dirname, "./public/pages/devices.html"));
 });
@@ -88,8 +88,7 @@ app.get("/api/getAll", async (req, res) => {
   }
 });
 app.get("/addDevices", async (req, res) => {
-  const html = devicesModule.addDevicesHTML();
-  res.send(html);
+  res.sendFile(path.resolve(__dirname, "./public/pages/add.html"));
 });
 app.get("/update", async (req, res) => {
   const html = devicesModule.updateDevicesHTML();
@@ -171,13 +170,12 @@ app.post("/api/addDevices", upload.single("image"), async (req, res) => {
       .json({ message: "An error occurred while adding the device" });
   }
 });
-app.get("/api/search/:search", async (req, res) => {
-  // const { string, minPrice, maxPrice } = req.params;
-  const { string } = req.params;
+app.post("/api/search", async (req, res) => {
+  const { string, minPrice, maxPrice } = req.body;
   try {
     console.log(req.params);
-    const devices = await search(string);
-    res.status(200).json({ message: "Device added search", result: devices });
+    const devices = await search(string, minPrice, maxPrice);
+    res.status(200).json(devices);
   } catch (error) {
     console.error("Failed to add device:", error);
 

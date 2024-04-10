@@ -1,6 +1,6 @@
 [
   {
-    "id": "DVH001",
+    "id": "DVH013",
     "name": "DV Smarthphone",
     "description": "A mobile phone come from ... ",
     "image": "1.jpg",
@@ -8,7 +8,7 @@
     "software": "iOS, Android"
   },
   {
-    "id": "DVH002",
+    "id": "DVH014",
     "name": "DV Laptop",
     "description": "A portable computer.",
     "image": "2.jfif",
@@ -16,7 +16,7 @@
     "software": "Windows, macOS, Linux"
   },
   {
-    "id": "DVH003",
+    "id": "DVH015",
     "name": "DV Tablet",
     "description": "A portable computer with a touchscreen interface.",
     "image": "3.jfif",
@@ -24,7 +24,7 @@
     "software": "iOS, Android"
   },
   {
-    "id": "DVH004",
+    "id": "DVH016",
     "name": "DV Smartwatch",
     "description": "A wearable device with smart features.",
     "image": "4.jfif",
@@ -32,7 +32,7 @@
     "software": "iOS, Android"
   },
   {
-    "id": "DVH005",
+    "id": "DVH017",
     "name": "DV Camera",
     "description": "A device used for capturing photographs and videos.",
     "image": "5.jfif",
@@ -40,7 +40,7 @@
     "software": "Camera-specific software"
   },
   {
-    "id": "DVH006",
+    "id": "DVH018",
     "name": "DV Headphones",
     "description": "Audio devices worn on the ears for listening to sound.",
     "image": "6.jfif",
@@ -48,7 +48,7 @@
     "software": "Audio playback software"
   },
   {
-    "id": "DVH007",
+    "id": "DVH019",
     "name": "DV Gaming Console",
     "description": "A device for playing electronic games.",
     "image": "7.jfif",
@@ -56,7 +56,7 @@
     "software": "Console-specific gaming software"
   },
   {
-    "id": "DVH008",
+    "id": "DVH020",
     "name": "DV Fitness Tracker",
     "description": "A device to monitor physical activity and health metrics.",
     "image": "8.jfif",
@@ -64,7 +64,7 @@
     "software": "Health and Fitness Software"
   },
   {
-    "id": "DVH009",
+    "id": "DVH021",
     "name": "DV Desktop Computer",
     "description": "A personal computer designed for use at a desk or table.",
     "image": "9.jfif",
@@ -72,7 +72,7 @@
     "software": "Windows, macOS, Linux"
   },
   {
-    "id": "DVH10",
+    "id": "DVH022",
     "name": "DV E-reader",
     "description": "A portable electronic device for reading digital books.",
     "image": "10.jfif",
@@ -80,7 +80,7 @@
     "software": "E-book Reading Software"
   },
   {
-    "id": "DVH011",
+    "id": "DVH023",
     "name": "iPHONE 15 PROMAX",
     "description": "Lenovo Tab M8 chiếc máy tính bảng giá rẻ, cấu hình ổn, thiết kế cao cấp trong tầm giá, hoàn toàn phù hợp với các nhu cầu cơ bản như đọc báo, xem phim, lướt web hằng ngày.",
     "image": "1.jpg",
@@ -88,7 +88,7 @@
     "software": "IOS"
   },
   {
-    "id": "DVH012",
+    "id": "DVH024",
     "name": "Máy tính bảng Lenovo Tab M8",
     "description": "Lenovo Tab M8 chiếc máy tính bảng giá rẻ, cấu hình ổn, thiết kế cao cấp trong tầm giá, hoàn toàn phù hợp với các nhu cầu cơ bản như đọc báo, xem phim, lướt web hằng ngày.",
     "image": "1712758454457.jpg",

@@ -200,6 +200,11 @@
         </div>
         <button type="submit" onclick="add()" class="w-36">Add Product</button>
       </form>
+
+      <form id="importJson" method="POST" enctype="multipart/form-data">
+        <input type="file" name="jsonFile" id="jsonFile" accept=".json" />
+        <button onclick="addMany()" type="submit">Import JSON</button>
+      </form>
     </div>
     <script src="/public/JS/create.js"></script>
   </body>

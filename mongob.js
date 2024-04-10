@@ -60,6 +60,22 @@ async function addDevices(name, description, image, price, software) {
   }
 }
 
+async function addMany(devicesDataArray) {
+  try {
+    const result = await dbCollection.insertMany(devicesDataArray);
+    if (result.insertedCount === devicesDataArray.length) {
+      console.log("Insertion successful!");
+      return true;
+    } else {
+      console.log("Some documents were not inserted.");
+      return false;
+    }
+  } catch (error) {
+    console.error("Error occurred while adding documents:", error);
+    throw error;
+  }
+}
+
 async function getAllDevices() {
   const devices = await dbCollection.find().toArray();
   return devices;
@@ -183,4 +199,5 @@ module.exports = {
   updateMulti,
   addDevices,
   search,
+  addMany,
 };

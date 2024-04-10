@@ -41,6 +41,7 @@ const {
   updateMulti,
   addDevices,
   search,
+  addMany,
 } = require("./mongob");
 
 mongodbModule = {
@@ -54,6 +55,7 @@ mongodbModule = {
   updateMulti,
   addDevices,
   search,
+  addMany,
 };
 
 const server = app.listen(port, () =>
@@ -182,5 +184,30 @@ app.post("/api/search", async (req, res) => {
     res
       .status(500)
       .json({ message: "An error occurred while adding the device" });
+  }
+});
+
+const fs = require("fs");
+
+app.post("/api/importJson", upload.single("jsonFile"), async (req, res) => {
+  try {
+    // Đọc nội dung của tệp JSON đã được tải lên
+    const fileContent = fs.readFileSync(req.file.path, "utf8");
+
+    // Chuyển đổi dữ liệu JSON thành mảng các đối tượng JavaScript
+    const jsonData = JSON.parse(fileContent);
+
+    // Thực hiện lưu trữ dữ liệu vào MongoDB bằng cách sử dụng hàm addMany
+    await addMany(jsonData);
+
+    // Xóa tệp JSON đã tải lên sau khi nhập thành công
+    fs.unlinkSync(req.file.path);
+
+    // Trả về phản hồi thành công cho frontend
+    res.status(200).json({ message: "Import JSON thành công" });
+  } catch (error) {
+    console.error("Lỗi khi import JSON:", error);
+    // Trả về phản hồi lỗi cho frontend
+    res.status(500).json({ message: "Lỗi khi import JSON" });
   }
 });

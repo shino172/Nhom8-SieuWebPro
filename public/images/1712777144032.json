@@ -1,0 +1,86 @@
+[
+  {
+    "name": "DV Smarthphone",
+    "description": "A mobile phone come from ... ",
+    "image": "1.jpg",
+    "price": 599.99,
+    "software": "iOS, Android"
+  },
+  {
+    "name": "DV Laptop",
+    "description": "A portable computer.",
+    "image": "2.jfif",
+    "price": 899.99,
+    "software": "Windows, macOS, Linux"
+  },
+  {
+    "name": "DV Tablet",
+    "description": "A portable computer with a touchscreen interface.",
+    "image": "3.jfif",
+    "price": 349.99,
+    "software": "iOS, Android"
+  },
+  {
+    "name": "DV Smartwatch",
+    "description": "A wearable device with smart features.",
+    "image": "4.jfif",
+    "price": 199.99,
+    "software": "iOS, Android"
+  },
+  {
+    "name": "DV Camera",
+    "description": "A device used for capturing photographs and videos.",
+    "image": "5.jfif",
+    "price": 499.99,
+    "software": "Camera-specific software"
+  },
+  {
+    "name": "DV Headphones",
+    "description": "Audio devices worn on the ears for listening to sound.",
+    "image": "6.jfif",
+    "price": 99.99,
+    "software": "Audio playback software"
+  },
+  {
+    "name": "DV Gaming Console",
+    "description": "A device for playing electronic games.",
+    "image": "7.jfif",
+    "price": 299.99,
+    "software": "Console-specific gaming software"
+  },
+  {
+    "name": "DV Fitness Tracker",
+    "description": "A device to monitor physical activity and health metrics.",
+    "image": "8.jfif",
+    "price": 299.99,
+    "software": "Health and Fitness Software"
+  },
+  {
+    "name": "DV Desktop Computer",
+    "description": "A personal computer designed for use at a desk or table.",
+    "image": "9.jfif",
+    "price": 999.99,
+    "software": "Windows, macOS, Linux"
+  },
+  {
+    "name": "DV E-reader",
+    "description": "A portable electronic device for reading digital books.",
+    "image": "10.jfif",
+    "price": 129.99,
+    "software": "E-book Reading Software"
+  },
+  {
+    "name": "iPHONE 15 PROMAX",
+    "description": "Lenovo Tab M8 chiếc máy tính bảng giá rẻ, cấu hình ổn, thiết kế cao cấp trong tầm giá, hoàn toàn phù hợp với các nhu cầu cơ bản như đọc báo, xem phim, lướt web hằng ngày.",
+    "image": "1.jpg",
+    "price": "1000000",
+    "software": "IOS"
+  },
+  {
+    "name": "Máy tính bảng Lenovo Tab M8",
+    "description": "Lenovo Tab M8 chiếc máy tính bảng giá rẻ, cấu hình ổn, thiết kế cao cấp trong tầm giá, hoàn toàn phù hợp với các nhu cầu cơ bản như đọc báo, xem phim, lướt web hằng ngày.",
+    "image": "1712758454457.jpg",
+    "price": "1000000",
+    "software": "E-book Reading Software"
+  }
+]

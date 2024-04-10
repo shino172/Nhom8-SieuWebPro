@@ -73,3 +73,4 @@ document
       })
       .catch((error) => console.error("Failed to search products:", error));
   });
+

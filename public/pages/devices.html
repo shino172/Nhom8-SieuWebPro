@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Gắn file CSS vào đây -->
-    <!-- <link rel="stylesheet" href="devices.css" /> -->
-    <title>List of Devices</title>
+    <!-- <link rel="stylesheet" href="css/devices.css" /> -->
     <style>
       * {
         box-sizing: border-box;
@@ -16,21 +15,19 @@
         font-family: Arial, sans-serif;
         background-color: #f3f2f2;
         display: flex;
-        flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
-        box-sizing: border-box;
+        flex-direction: column;
         overflow-x: hidden;
       }
 
-      /* sidebar */
       .sidebar {
         width: 250px;
-        background-color: #2c3e50; /* Màu nền xanh đậm */
-        color: #fff; /* Màu chữ trắng */
+        background-color: #2c3e50;
+        color: #fff;
         position: fixed;
         height: 100%;
         overflow-y: auto;
         z-index: 1;
-        transition: width 0.5s; /* Hiệu ứng chuyển đổi mượt mà */
+        transition: width 0.5s;
       }
 
       .sidebar-brand {
@@ -47,14 +44,13 @@
         width: 40px;
         height: 40px;
         margin-right: 10px;
-        border-radius: 50%; /* Đảm bảo hình ảnh tròn */
+        border-radius: 50%;
       }
 
       .sidebar-menu {
         padding: 20px;
       }
 
-      /* sản phẩm */
       .list-item {
         list-style: none;
         padding: 0;
@@ -72,7 +68,7 @@
       }
 
       .list-item a:hover {
-        background-color: #34495e; /* Tăng độ sáng màu nền khi hover */
+        background-color: #34495e;
       }
 
       .product-container {
@@ -83,7 +79,7 @@
         grid-gap: 20px;
         background-color: #eeeeee;
         margin-left: 250px;
-        transition: margin-left 0.5s; /* Hiệu ứng chuyển đổi mượt mà */
+        transition: margin-left 0.5s;
       }
 
       .product-card {
@@ -126,9 +122,6 @@
         margin-bottom: 20px;
         position: relative;
         left: 30%;
-        right: 0;
-        top: 0;
-        bottom: 0;
       }
 
       #string,
@@ -171,7 +164,7 @@
 
       @media (max-width: 768px) {
         .sidebar {
-          width: 0; /* Thu gọn sidebar trên màn hình nhỏ */
+          width: 0;
         }
 
         .product-container {
@@ -179,6 +172,7 @@
         }
       }
     </style>
+    <title>List of Devices</title>
   </head>
   <body>
     <div class="sidebar">
@@ -191,58 +185,16 @@
         <li><a href="/view">View Detail Product</a></li>
       </ul>
     </div>
-    <form id="searchForm" class="search-form">
-      <input type="text" id="string" placeholder="Search devices..." />
-      <input type="text" id="minPrice" placeholder="min price" />
-      <input type="text" id="maxPrice" placeholder="max price" />
-      <button type="submit">Search</button>
-    </form>
-
-    <div class="product-container" id="productContainer">
-      {{#each devices}}
-      <div class="product-card">
-        <img src="/public/images/{{image}}" alt="${product.name}" />
-        <div class="product-content">
-          <h3 class="product-name">{{name}}</h3>
-          <p class="product-price">{{price}}</p>
-        </div>
-      </div>
-      {{/each}}
+    <div>
+      <form id="searchForm" class="search-form">
+        <input type="text" id="string" placeholder="Search devices..." />
+        <input type="text" id="minPrice" placeholder="min price" />
+        <input type="text" id="maxPrice" placeholder="max price" />
+        <button type="submit">Search</button>
+      </form>
+      <div id="product-container" class="product-container"></div>
     </div>
-    <script>
-      document
-        .getElementById("searchForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault();
 
-          // Get the search parameters
-          var string = document.getElementById("string").value;
-          var minPrice = document.getElementById("minPrice").value;
-          var maxPrice = document.getElementById("maxPrice").value;
-          const data = { string, minPrice, maxPrice };
-          console.log(data);
-          // Construct the URL with query parameters
-
-          fetch("http://localhost:3000/api/search", {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error("Network response was not ok");
-              }
-              return response.json();
-            })
-            .then((data) => {
-              alert(data.message);
-            })
-            .catch((error) => {
-              console.error("There was an error!", error);
-              alert("An error occurred while search the devices");
-            });
-        });
-    </script>
+    <script src="/public/JS/devices.js"></script>
   </body>
 </html>

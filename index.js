@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 const multer = require("multer");
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/images");
@@ -14,7 +15,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// app.use(express.static("public"));
 app.use(
   "/public",
   express.static(__dirname + "/public", {
@@ -54,19 +54,6 @@ mongodbModule = {
   addDevices,
 };
 
-const {
-  findByNameHTML,
-  addDevicesHTML,
-  updateDevicesHTML,
-  viewHTML,
-} = require("./public/pages/pages");
-const devicesModule = {
-  findByNameHTML,
-  addDevicesHTML,
-  updateDevicesHTML,
-  viewHTML,
-};
-
 const server = app.listen(port, () =>
   console.log(`Server is running at http://localhost:${port}/`)
 );
@@ -84,10 +71,21 @@ mongodbModule
 process.on("SIGINT", () => {
   mongodbModule.closeMongoDBConnection();
 });
+
+
+
 app.get("/", async (req, res) => {
-  const devices = await getAllDevices();
-  const html = devicesModule.findByNameHTML(devices);
-  res.send(html);
+  res.sendFile(path.resolve(__dirname, "./public/pages/devices.html"));
+});
+
+app.get("/api/getAll", async (req, res) => {
+  try {
+    const data = await getAllDevices();
+    res.status(200).json(data);
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 app.get("/addDevices", async (req, res) => {
   const html = devicesModule.addDevicesHTML();
@@ -115,7 +113,6 @@ app.put("/update/:id", async (req, res) => {
       software: "iOS, Android",
     };
     const devices = await updateByID(id, data);
-    const html = devicesModule.findByNameHTML(devices);
     res.send("update succes");
   } catch (err) {
     console.error("Failed to update devices", err);
@@ -134,7 +131,6 @@ app.put("/updateMutil/:name", async (req, res) => {
       software: "iOS, Android",
     };
     const devices = await updateMulti(name, data);
-    const html = devicesModule.findByNameHTML(devices);
     res.send("update mutil succes");
   } catch (err) {
     console.error("Failed to update devices", err);
@@ -147,7 +143,6 @@ app.delete("/delete/:id", async (req, res) => {
     const id = req.params.id;
     console.log(id);
     const devices = await deleteByID(id);
-    const html = devicesModule.findByNameHTML(devices);
     res.send("delete success");
   } catch (err) {
     console.error("Failed to delete devices", err);

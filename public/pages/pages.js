@@ -2,26 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
 
-function findByNameHTML(devices) {
-  try {
-    const htmlPath = path.join(__dirname, "/devices.html");
-
-    // Đọc nội dung của tệp HTML
-    const html = fs.readFileSync(htmlPath, "utf8");
-
-    // Compile template HTML thành một hàm
-    const template = Handlebars.compile(html);
-
-    // Render dữ liệu JSON vào template HTML
-    const renderedHtml = template({ devices: devices });
-
-    return renderedHtml;
-  } catch (err) {
-    console.error("Failed to read HTML file:", err);
-    return "<p>Failed to load HTML content</p>";
-  }
-}
-
 function addDevicesHTML() {
   try {
     const htmlPath = path.join(__dirname, "add.html");
@@ -69,7 +49,6 @@ function viewHTML(devices) {
 }
 
 module.exports = {
-  findByNameHTML,
   addDevicesHTML,
   updateDevicesHTML,
   viewHTML,

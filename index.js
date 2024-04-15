@@ -96,11 +96,14 @@ app.get("/update", async (req, res) => {
   const html = devicesModule.updateDevicesHTML();
   res.send(html);
 });
-app.get("/view", async (req, res) => {
-  const devices = await getAllDevices();
-  const html = devicesModule.viewHTML(devices);
-  res.send(html);
+app.get("/deleteProduct", async (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./public/pages/delete.html"));
 });
+// app.get("/view", async (req, res) => {
+//   const devices = await getAllDevices();
+//   const html = devicesModule.viewHTML(devices);
+//   res.send(html);
+// });
 
 app.put("/update/:id", async (req, res) => {
   try {
@@ -139,14 +142,18 @@ app.put("/updateMutil/:name", async (req, res) => {
   }
 });
 
-app.delete("/delete/:id", async (req, res) => {
+app.delete("/api/delete/:id", async (req, res) => {
   try {
     const id = req.params.id;
     console.log(id);
     const devices = await deleteByID(id);
-    res.send("delete success");
+    if (devices) {
+      res.send("Device deleted successfully");
+    } else {
+      res.status(404).send("Device not found for deletion");
+    }
   } catch (err) {
-    console.error("Failed to delete devices", err);
+    console.error("Failed to delete device", err);
     res.status(500).send("Error");
   }
 });
